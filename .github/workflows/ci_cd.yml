@@ -42,7 +42,7 @@ jobs:
           npm run build
 
       - name: zip file
-        run: zip -r kisuj.zip ./dist ./before-deploy.sh ./after-deploy.sh ./appspec.yml ./.env ./package.json
+        run: zip -r kisuj.zip ./dist ./before_deploy.sh ./after_deploy.sh ./appspec.yml ./.env ./package.json
 
       - name: aws configure credentials
         uses: aws-actions/configure-aws-credentials@v1
