@@ -2,7 +2,4 @@
 REPOSITORY=/home/ubuntu/kisuj
 
 cd $REPOSITORY
-
-npm install
-npm run start
-#sudo pm2 start -- npm -- run start
+pm2 start npm -- start
