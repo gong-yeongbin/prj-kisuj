@@ -57,6 +57,6 @@ jobs:
       - name: deploy with aws codedeploy
         run: aws deploy create-deployment
           --application-name kisuj-codedeploy
-          --deployment-config-name CodeDeployDefault.OneAtTime
+          --deployment-config-name CodeDeployDefault.OneAtATime
           --deployment-group-name kisuj-group
           --s3-location bucket=kisuj-build,bundelType=zip,key=deploy/kisuj.zip
