@@ -3,6 +3,4 @@ REPOSITORY=/home/ubuntu/build
 
 cd $REPOSITORY
 
-sudo npm install
-
-sudo pm2 start -- npm -- start
+sudo pm2 start -- npm -- run start
