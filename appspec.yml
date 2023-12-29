@@ -3,8 +3,7 @@ os: linux
 
 files:
   - source: /
-    destination: /home/ubuntu/build
-
+    destination: /home/ubuntu/kisuj
 permissions:
   - object: /home/ubuntu/
     pattern: '**'

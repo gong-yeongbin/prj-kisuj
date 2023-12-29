@@ -10,4 +10,4 @@ pm2 delete all
 echo '========================================'
 echo 'delete src directory'
 echo '========================================'
-rm -rf build
+rm -rf kisuj
