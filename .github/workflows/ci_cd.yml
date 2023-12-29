@@ -38,4 +38,5 @@ jobs:
       - name: build server files
         working-directory: ./
         run: |
+          npm install
           npm run build
