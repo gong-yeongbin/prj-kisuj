@@ -13,6 +13,6 @@ hooks:
   BeforeInstall:
     - location: ./before_deploy.sh
       runas: ubuntu
-  AfterInstall:
-    - location: ./after_deploy.sh
-      runas: ubuntu
+#  AfterInstall:
+#    - location: ./after_deploy.sh
+#      runas: ubuntu
