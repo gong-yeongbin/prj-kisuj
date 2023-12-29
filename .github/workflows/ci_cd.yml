@@ -59,4 +59,4 @@ jobs:
           --application-name kisuj-codedeploy
           --deployment-config-name CodeDeployDefault.OneAtATime
           --deployment-group-name kisuj-group
-          --s3-location bucket=kisuj-build,bundelType=zip,key=deploy/kisuj.zip
+          --s3-location bucket=kisuj-build,bundleType=zip,key=deploy/kisuj.zip
