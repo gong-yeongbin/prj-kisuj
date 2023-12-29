@@ -40,3 +40,23 @@ jobs:
         run: |
           npm install
           npm run build
+
+      - name: zip file
+        run: zip -r kisuj.zip ./dist ./appspec.yml ./.env ./package.json
+
+      - name: aws configure credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
+          aws-region: ap-northeast-2
+
+      - name: upload to s3
+        run: aws s3 cp --region ap-northeast-2 ./kisuj.zip s3://kisuj-build/deploy/
+
+      - name: deploy with aws codedeploy
+        run: aws deploy create-deployment
+          --application-name kisuj-codedeploy
+          --deployment-config-name CodeDeployDefault.OneAtTime
+          --deployment-group-name kisuj-group
+          --s3-location bucket=kisuj-build,bundelType=zip,key=deploy/kisuj.zip
