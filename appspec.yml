@@ -9,10 +9,10 @@ permissions:
     pattern: '**'
     owner: ubuntu
     group: ubuntu
-#hooks:
-#  BeforeInstall:
-#    - location: ./before_deploy.sh
-#      runas: ubuntu
-#  AfterInstall:
-#    - location: ./after_deploy.sh
-#      runas: ubuntu
+hooks:
+  BeforeInstall:
+    - location: ./before_deploy.sh
+      runas: ubuntu
+  AfterInstall:
+    - location: ./after_deploy.sh
+      runas: ubuntu
