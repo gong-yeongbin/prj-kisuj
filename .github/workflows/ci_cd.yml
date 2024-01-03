@@ -34,6 +34,12 @@ jobs:
           pwd
           touch .env
           echo PORT=${{ secrets.PORT }} >> .env
+          echo PORT=${{ secrets.KIS_DOMAIN }} >> .env
+          echo PORT=${{ secrets.KIS_APP_KEY }} >> .env
+          echo PORT=${{ secrets.KIS_SECRET_KEY }} >> .env
+          echo PORT=${{ secrets.AWS_ACCESS_KEY }} >> .env
+          echo PORT=${{ secrets.AWS_SECRET_KEY }} >> .env
+          echo PORT=${{ secrets.AWS_S3_BUCKET }} >> .env
 
       - name: build server files
         working-directory: ./
