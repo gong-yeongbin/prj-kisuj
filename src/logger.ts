@@ -17,14 +17,14 @@ const logger = winston.createLogger({
             datePattern: 'YYYY-MM-DD',
             dirname: logDir,
             filename: `%DATE%.log`,
-            maxFiles: 1,
+            maxFiles: 2,
         }),
         new winstonDaily({
             level: 'error',
             datePattern: 'YYYY-MM-DD',
             dirname: logDir,
             filename: `%DATE%.log`,
-            maxFiles: 1,
+            maxFiles: 2,
         }),
     ],
     exceptionHandlers: [
@@ -33,7 +33,7 @@ const logger = winston.createLogger({
             datePattern: 'YYYY-MM-DD',
             dirname: logDir,
             filename: `%DATE%.log`,
-            maxFiles: 1,
+            maxFiles: 2,
         }),
     ],
 });

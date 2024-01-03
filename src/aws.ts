@@ -13,7 +13,7 @@ export const uploadFile = (content) => {
 
     const params = {
         Bucket: process.env.AWS_S3_BUCKET,
-        Key: `${dayjs().format('YYYY-MM-DD')}`,
+        Key: `${dayjs().subtract(1, 'day').format('YYYY-MM-DD')}`,
         Body: content,
     };
     s3.upload(params, function (err, data) {

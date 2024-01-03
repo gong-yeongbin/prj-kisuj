@@ -13,11 +13,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/node-schedule": "^2.1.5",
     "aws-sdk": "^2.1528.0",
     "axios": "^1.6.3",
     "dayjs": "^1.11.10",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
+    "node-schedule": "^2.1.1",
     "winston": "^3.11.0",
     "winston-daily-rotate-file": "^4.7.1"
   },
