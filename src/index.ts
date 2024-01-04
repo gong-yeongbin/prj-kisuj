@@ -3,7 +3,8 @@ import 'dotenv/config';
 import logger from './logger';
 import { scheduleJob } from 'node-schedule';
 import { fileUploadSchedule } from './scheduler/fileUpload';
-import dayjs from 'dayjs';
+
+console.log(process.cwd());
 
 const app: Express = express();
 const port: number = 3000;

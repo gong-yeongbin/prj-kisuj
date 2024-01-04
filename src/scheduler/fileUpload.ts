@@ -9,15 +9,15 @@ export const fileUploadSchedule = () => {
         .format('YYYY-MM-DD')}.log`;
 
     fs.stat(filePath, (err, stats) => {
-        if (stats.size > 0) {
-            const content: string = fs.readFileSync(filePath, 'utf-8');
-            uploadFile(content);
-        } else {
-            logger.info('The log file size is 0.');
-        }
-
         if (err) {
             logger.error(err);
+        } else {
+            if (stats.size > 0) {
+                const content: string = fs.readFileSync(filePath, 'utf-8');
+                uploadFile(content);
+            } else {
+                logger.info('The log file size is 0.');
+            }
         }
     });
 };

@@ -1,5 +1,5 @@
 #!/bin/bash
-REPOSITORY=/home/ubuntu
+REPOSITORY=/home/ubuntu/kisuj
 cd $REPOSITORY
 
 echo '========================================'
@@ -10,4 +10,4 @@ pm2 delete all
 echo '========================================'
 echo 'delete src directory'
 echo '========================================'
-rm -rf kisuj
+rm -rf `ls | find . -name logs -prune -o -print`
