@@ -7,10 +7,9 @@ AWS.config.update({
     accessKeyId: process.env.AWS_ACCESS_KEY,
     secretAccessKey: process.env.AWS_SECRET_KEY,
 });
+const s3 = new AWS.S3();
 
 export const uploadFile = (content) => {
-    const s3 = new AWS.S3();
-
     const params = {
         Bucket: process.env.AWS_S3_BUCKET,
         Key: `${dayjs().subtract(1, 'day').format('YYYY-MM-DD')}`,
@@ -19,8 +18,36 @@ export const uploadFile = (content) => {
     s3.upload(params, function (err, data) {
         if (err) {
             logger.error(err);
+        } else {
+            logger.info('file uploaded successfully.');
         }
+    });
+};
 
-        logger.info('file uploaded successfully.');
+const dynamoDB = new AWS.DynamoDB.DocumentClient();
+export const putDynamodb = (input: {
+    TableName: string;
+    Item: {
+        date: string;
+        open: number;
+        high: number;
+        low: number;
+        close: number;
+        jdiff_vol: number;
+        value: number;
+        jongchk: number;
+        rate: string;
+        pricechk: number;
+        ratevalue: number;
+        sign: string;
+        shcode?: string;
+    };
+}) => {
+    dynamoDB.put(input, (err, data) => {
+        if (err) {
+            logger.error(err);
+        } else {
+            logger.info(`${JSON.stringify(input)}`);
+        }
     });
 };

@@ -1,7 +1,7 @@
 import { ebestToken } from '../api/ebest/auth';
 import { t8436 } from '../api/ebest/etc';
-import logger from '../logger';
 import { t8410 } from '../api/ebest/stock';
+import { putDynamodb } from '../aws';
 
 export const dailyCandleSchedule = async () => {
     const ebestAuth = await ebestToken();
@@ -11,8 +11,10 @@ export const dailyCandleSchedule = async () => {
     );
 
     for (let i = 0; i < t8436Filter.length; i++) {
-        const data = await t8410(ebestAuth.access_token, t8436Filter[i].shcode);
-        data.t8410OutBlock1[0]['shcode'] = t8436Filter[i].shcode;
-        logger.info(JSON.stringify(data.t8410OutBlock1[0]));
+        const item = await t8410(ebestAuth.access_token, t8436Filter[i].shcode);
+        item.t8410OutBlock1[0]['shcode'] = t8436Filter[i].shcode;
+
+        const data = { TableName: 'DailyCandle', Item: item.t8410OutBlock1[0] };
+        putDynamodb(data);
     }
 };
